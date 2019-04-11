@@ -1,10 +1,10 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { Config } from './interfaces/config';
+import { RadarrApiService } from './services/radarr-api.service';
 
 @NgModule({
   declarations: [],
-  imports: [
-  ],
+  imports: [],
   exports: []
 })
 export class NgxRadarrModule {
@@ -12,6 +12,7 @@ export class NgxRadarrModule {
     return {
         ngModule: NgxRadarrModule,
         providers: [
+            RadarrApiService,
             {
                 provide: 'config',
                 useValue: config
