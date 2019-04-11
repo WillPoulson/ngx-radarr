@@ -4,6 +4,7 @@ import * as _ from 'lodash';
 import { Disk } from '../interfaces/disk';
 import { Config } from '../interfaces/config';
 import { Movie } from '../interfaces/movie';
+import { NewMovie } from '../interfaces/new-movie';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,38 @@ export class RadarrApiService {
             return x.downloaded === true;
           });
         }
+        return resolve(movies);
+      }).catch((error) => {
+        return reject(error);
+      });
+    });
+  }
+
+  public getMovieInLibraryWithID(id: number): Promise<Movie> {
+    return new Promise((resolve, reject) => {
+      this.http.get(this.config.url + '/movie/' + id.toString(), {params : this.getAuthParams()}).toPromise().then((movie: Movie) => {
+        return resolve(movie);
+      }).catch((error) => {
+        return reject(error);
+      });
+    });
+  }
+
+  public addMovieToLibrary(newMovie: NewMovie): Promise<Movie> {
+    return new Promise((resolve, reject) => {
+      this.http.post(this.config.url + '/movie', newMovie, {params: this.getAuthParams()}).toPromise().then((movie: Movie) => {
+        return resolve(movie);
+      }).catch((error) => {
+        return reject(error);
+      });
+    });
+  }
+
+  public getMovieLookup(term: string) : Promise<Array<Movie>> {
+    return new Promise((resolve, reject) => {
+      const params = this.getAuthParams();
+      params.append('term', term);
+      this.http.get(this.config.url + '/movie/lookup', {params: params}).toPromise().then((movies: Array<Movie>) => {
         return resolve(movies);
       }).catch((error) => {
         return reject(error);
