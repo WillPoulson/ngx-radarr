@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import * as _ from 'lodash';
 import { Disk } from '../interfaces/disk';
 import { Config } from '../interfaces/config';
+import { Movie } from '../interfaces/movie';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,21 @@ export class RadarrApiService {
           disk.usedSpace = disk.totalSpace - disk.freeSpace;
         }
         return resolve(disks);
+      }).catch((error) => {
+        return reject(error);
+      });
+    });
+  }
+
+  public getMoviesInLibrary(downloadedOnly?: boolean): Promise<Array<Movie>> {
+    return new Promise((resolve, reject) => {
+      this.http.get(this.config.url + '/movie', {params : this.getAuthParams()}).toPromise().then((movies: Array<Movie>) => {
+        if (downloadedOnly) {
+          movies = movies.filter((x) => {
+            return x.downloaded === true;
+          });
+        }
+        return resolve(movies);
       }).catch((error) => {
         return reject(error);
       });
