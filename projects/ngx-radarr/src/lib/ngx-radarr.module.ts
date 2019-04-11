@@ -1,10 +1,13 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { Config } from './interfaces/config';
 import { RadarrApiService } from './services/radarr-api.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [],
-  imports: [],
+  imports: [
+    HttpClientModule
+  ],
   exports: []
 })
 export class NgxRadarrModule {

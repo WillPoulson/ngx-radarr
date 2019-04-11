@@ -14,6 +14,7 @@ export class AppComponent implements OnInit{
   ngOnInit() {
     this.radarr.getMoviesInLibrary().then((movies) => {
       this.moviesInLibrary = movies;
+      console.log(this.moviesInLibrary);
     }).catch((error) => {
       console.log('Uh oh there was an error');
     });
