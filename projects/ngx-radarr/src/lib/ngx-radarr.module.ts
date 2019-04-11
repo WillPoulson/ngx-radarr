@@ -1,4 +1,5 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
+import { Config } from './interfaces/config';
 
 @NgModule({
   declarations: [],
@@ -7,7 +8,7 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
   exports: []
 })
 export class NgxRadarrModule {
-  public static forRoot(config: any): ModuleWithProviders {
+  public static forRoot(config: Config): ModuleWithProviders {
     return {
         ngModule: NgxRadarrModule,
         providers: [
