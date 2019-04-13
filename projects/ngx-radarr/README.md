@@ -17,7 +17,8 @@ To install this package you must first import it into your `app.module.ts` provi
     ...
     imports: [
         NgxRadarrModule.forRoot(ngxRadarrConfig)
-    ])
+    ]
+    })
 
 Next you can import the service where you need it and start using it.
 
