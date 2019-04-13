@@ -1,6 +1,24 @@
 {
   "name": "ngx-radarr",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "description": "A Angular 7+ package for interacting with the Radarr API.",
+  "author": "Will Poulson",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/WillPoulson/ngx-radarr.git"
+  },
+  "bugs": {
+    "url": "https://github.com/WillPoulson/ngx-radarr/issues"
+  },
+  "homepage": "https://github.com/WillPoulson/ngx-radarr",
+  "keywords": [
+    "angular",
+    "radarr",
+    "movies",
+    "ngx",
+    "api"
+  ],
+  "license": "MIT",
   "peerDependencies": {
     "@angular/common": "^7.1.0",
     "@angular/core": "^7.1.0"
