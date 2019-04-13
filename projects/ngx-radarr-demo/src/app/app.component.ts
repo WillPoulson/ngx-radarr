@@ -27,10 +27,14 @@ export class AppComponent implements OnInit{
     //   console.log('Uh oh there was an error');
     // });
 
-    this.radarr.getMovieLookup('The Snowman').then((response) => {
+    // this.radarr.getMovieLookup('The Snowman').then((response) => {
+    //   console.log(response);
+    // }).catch((error) => {
+    //   console.log(error);
+    // });
+
+    this.radarr.getDiskSpace().then((response) => {
       console.log(response);
-    }).catch((error) => {
-      console.log(error);
     });
   }
 }
