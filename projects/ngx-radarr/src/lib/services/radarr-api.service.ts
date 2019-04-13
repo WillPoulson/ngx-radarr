@@ -66,8 +66,7 @@ export class RadarrApiService {
 
   public getMovieLookup(term: string) : Promise<Array<Movie>> {
     return new Promise((resolve, reject) => {
-      const params = this.getAuthParams();
-      params.append('term', term);
+      const params = this.getAuthParams().set('term', term);
       this.http.get(this.config.url + '/movie/lookup', {params: params}).toPromise().then((movies: Array<Movie>) => {
         return resolve(movies);
       }).catch((error) => {
@@ -77,8 +76,7 @@ export class RadarrApiService {
   }
 
   private getAuthParams(): HttpParams {
-    const params = new HttpParams();
-    params.append('apikey', this.config.key);
-    return _.cloneDeep(params);
+    const params = new HttpParams().set('apikey', this.config.key);
+    return params;
   }
 }
